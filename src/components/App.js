@@ -8,8 +8,14 @@ class App extends React.Component{
     super()
     this.state= {
       filtersList: [],
-      items: []
+      items: [],
+      selectedFilter: null
     }
+  }
+
+  handleFilterChange = event => {
+    console.log('new filter: ', event.target.value);
+    this.setState({ selectedFilter: event.target.value });
   }
 
   componentWillMount() {
@@ -23,13 +29,17 @@ class App extends React.Component{
   fetchFilters = () => {
       fetch('/api/fruit_types')
         .then(response => response.json())
-        .then(filters => this.setState({ filters }));
+        .then(filtersList => this.setState({ filtersList }));
   }
 
 
   render(){
     return(
-      <FruitBasket filtersList={this.state.filtersList} items={this.state.items}/>
+      <FruitBasket
+        selectedFilter= {this.state.selectedFilter}
+        handleFilterChange={this.handleFilterChange}
+        filtersList={this.state.filtersList}
+        items={this.state.items}/>
     )
   }
 
