@@ -17,6 +17,13 @@ class FruitBasket extends Component {
   }
 }
 
+FruitBasket.defaultProps ={
+  fruit: [],
+  filters: [],
+  currentFilter: ()=> console.log("Please input a CurrentFilter prop"),
+  updateFilterCallback: ()=> console.log("Please input a updateFilterCallback prop"),
+}
+
 
 
 export default FruitBasket;
