@@ -7,12 +7,17 @@ class App extends React.Component{
   constructor(){
     super()
     this.state= {
-      filters: []
+      filtersList: [],
+      items: []
     }
   }
 
   componentWillMount() {
     this.fetchFilters();
+
+    fetch('/api/fruit')
+      .then(response => response.json())
+      .then(items => this.setState({ items }));
   }
 
   fetchFilters = () => {
@@ -24,7 +29,7 @@ class App extends React.Component{
 
   render(){
     return(
-      <FruitBasket filters={this.state.filters}/>
+      <FruitBasket filtersList={this.state.filtersList} items={this.state.items}/>
     )
   }
 
