@@ -3,19 +3,15 @@ import React, { Component }  from 'react';
 import Filter from './Filter';
 import FilteredFruitList from './FilteredFruitList.js';
 
-class FruitBasket extends Component {
+const FruitBasket = ({filters, currentFilter, fruit, handleFilterChange}) => (
 
-  render() {
-    return (
       <div className="fruit-basket">
-        <Filter filters={this.props.filters} handleChange={this.props.handleFilterChange} />
+        <Filter filters={filters} handleChange={handleFilterChange} />
         <FilteredFruitList
-          filter={this.props.currentFilter}
-          items={this.props.items} />
+          filter={currentFilter}
+          fruit={fruit} />
       </div>
     );
-  }
-}
 
 FruitBasket.defaultProps ={
   fruit: [],

@@ -39,7 +39,7 @@ class App extends React.Component{
         currentFilter= {this.state.currentFilter}
         handleFilterChange={this.handleFilterChange}
         filters={this.state.filters}
-        items={this.state.fruit}/>
+        fruit={this.state.fruit}/>
     )
   }
 
